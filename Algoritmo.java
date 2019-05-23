@@ -1,17 +1,21 @@
-public class Batata{
+
+public class Algoritmo {
 	private String nome;
-	private float [] parametros;
-
-	public Algoritmo(String nome, float [] parametros) {
+	private float [] parametros = new float[3];
+	
+	public Algoritmo(String nome,float parametros[]) { //Fazer validação desse vetor
 		this.nome = nome;
-		parametros = new float [3];
-	}
+		for (int i =0;i<3;i++ ) {
+			if (parametros[i]==0.0f) {
+				this.parametros[i] =  Float.MAX_VALUE;			
+			}			
+		}		
 
+	}
 	public String getNome() {
 		return nome;
 	}
-
-	public float getParametros() {
+	public float [] getParametros() {
 		return parametros;
 	}
 }
