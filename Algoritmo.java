@@ -1,4 +1,4 @@
-public class Algoritmo {
+public class Batata{
 	private String nome;
 	private float [] parametros;
 
