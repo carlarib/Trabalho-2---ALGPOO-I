@@ -5,9 +5,24 @@ public class Dataset {
 	private String nome;
 
 	public Dataset(int nExemplos, int nAtributos, int nClasses, String nome) {
-		this.numExemplos = nExemplos;
-		this.numAtributos = nAtributos;
-		this.numClasses = nClasses;
+		if (nExemplos >= 0) {
+			this.numExemplos = nExemplos;
+		} else {
+			this.numExemplos = 0;
+		}
+
+		if (nAtributos >= 0) {
+			this.numAtributos = nAtributos;
+		} else {
+			this.numAtributos = 0;
+		}
+
+		if (nClasses >= 0) {
+			this.numClasses = nClasses;
+		} else {
+			this.numClasses = 0;
+		}
+		
 		this.nome = nome;
 	}
 
