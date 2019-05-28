@@ -5,15 +5,17 @@ public class ValorAvaliacao {
 	public ValorAvaliacao(MedidaAvaliacao medida) {
 		valor = 0.0f;
 		this.medida = medida;
+		this.valor = valor;
 	}
 
 	/*
 	public boolean setValor(float valor) {
-		this.valor = valor;
 		if (getMenorValor < valor < getMaiorValor){
 			return true;
+			this.valor = valor;
 		}
 		else {
+			System.out.println("Atribuição impossível");
 			return false;
 		}
 	}
