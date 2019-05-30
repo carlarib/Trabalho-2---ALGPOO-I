@@ -8,18 +8,18 @@ public class ValorAvaliacao {
 		this.valor = valor;
 	}
 
-	/*
+	
 	public boolean setValor(float valor) {
-		if (getMenorValor < valor < getMaiorValor){
-			return true;
+		if (valor>medida.getMenorValor() && valor < medida.getMaiorValor()){
 			this.valor = valor;
+			return true;
 		}
 		else {
 			System.out.println("Atribuição impossível");
 			return false;
 		}
 	}
-	*/
+	
 
 	public float getValor() {
 		return valor;
