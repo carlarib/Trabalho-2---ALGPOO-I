@@ -50,7 +50,9 @@ public class Resultado{
 				vazio = true;
 				posicao = i;
 			}
-
+			else {
+				vazio = false;
+			}	
 		}
 
 		if(vazio == false){
