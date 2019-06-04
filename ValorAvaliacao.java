@@ -7,9 +7,9 @@ public class ValorAvaliacao {
 		this.medida = medida;
 		this.valor = valor;
 	}
-	
+
 	public boolean setValor(float valor) {
-		if (valor > medida.getMenorValor() && valor < medida.getMaiorValor()){
+		if (valor > medida.getMenorValor() && valor < medida.getMaiorValor()) {
 			this.valor = valor;
 			return true;
 		}
@@ -18,7 +18,7 @@ public class ValorAvaliacao {
 			return false;
 		}
 	}
-	
+
 	public float getValor() {
 		return valor;
 	}
