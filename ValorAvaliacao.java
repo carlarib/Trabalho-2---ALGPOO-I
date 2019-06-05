@@ -26,4 +26,15 @@ public class ValorAvaliacao {
 	public MedidaAvaliacao getMedida() {
 		return medida;
 	}
+
+	public boolean equals(ValorAvaliacao avaliacao) {
+		boolean medidasIguais = false;
+
+		if (getMedida().getNome().equals(avaliacao.getMedida().getNome()) 
+			&& getMedida().getMaiorValor() == avaliacao.getMedida().getMaiorValor() 
+			&& getMedida().getMenorValor() == avaliacao.getMedida().getMenorValor()) {
+			medidasIguais = true;
+		}
+		return medidasIguais;
+	}
 }

@@ -6,12 +6,7 @@ public class Resultado {
 	public Resultado(Algoritmo algoritmo, Dataset dataset) {
 		this.algoritmo = algoritmo;
 		this.dataset = dataset;
-		avaliacao = new ValorAvaliacao[3];
-
-		for (int i = 0; i < 3; i++) {
-			MedidaAvaliacao medida = new MedidaAvaliacao("", 0.0f, 0.0f);
-			this.avaliacao[i] = new ValorAvaliacao(medida);
-		}
+		this.avaliacao = new ValorAvaliacao[3];
 	}
 
 	public Algoritmo getAlgoritmo() {
@@ -36,45 +31,52 @@ public class Resultado {
 
 	public boolean addAvaliacao(ValorAvaliacao avaliacao) {
 		int posicao = 0; 
-		boolean mesmaMedida = false, posVazia = false;
+		boolean mesmaMedida = false, posVazia = false, retorno = false;	
 
-
-
-		// verificando se há espaço no vetor
-		for (int i = 0; i < 3 && posVazia == false; i++) {
-			if (this.avaliacao[i].getMedida().getNome().equals("")) {
-				posVazia = true;
-				posicao = i;
+		for (int i = 0; i < this.avaliacao.length && this.avaliacao[i] != null; i++) {
+			if (this.avaliacao[i].equals(avaliacao)) {
+				mesmaMedida = true;
 			}
 		}
-
-		if (posVazia) {
-		// conferindo se há outra medida existente que seja igual à medida que está sendo recebida na instanciação do objeto avaliação
-			for (int i = 0; i < 3; i++) {
-				if (avaliacao.getMedida().getNome().equals(this.avaliacao[i].getMedida().getNome())) {
-					mesmaMedida = true;
-				}
-				else {
-					mesmaMedida = false;
+		if (mesmaMedida) {
+			System.out.println("Nao foi possivel adicionar a avaliacao pois ja existe outra avaliacao igual com a mesma medida de avaliacao.");
+		}
+		else {
+			for (int i = 0; i < this.avaliacao.length && posVazia == false; i++) {
+				if (this.avaliacao[i] == null) {
+					posVazia = true;
+					posicao = i;
 				}
 			}
-		}		
-				
-		// adicionando uma nova avaliação na posição vazia do vetor
-		if (mesmaMedida != true) {
-			this.avaliacao[posicao] = avaliacao;
-			System.out.println("Nova avaliacao adicionada com sucesso.");
-		}
-		else if (posVazia == false) {			
-			System.out.println("Nao ha espaco disponivel para uma nova avaliacao pois o numero maximo de avaliacoes permitidas foi atingido."); 
-		}
-		else if (posVazia == true && mesmaMedida == true) {
-			System.out.println("Nao foi possivel adicionar a avaliacao pois ela ja existe."); 
-		}
-		return posVazia;		
+			if (posVazia) {
+				this.avaliacao[posicao] = avaliacao;
+				System.out.println("Nova avaliacao adicionada com sucesso!");
+				retorno = true;
+			}
+			else {
+				System.out.println("Nao foi possivel adicionar uma nova avaliacao pois o limite de avaliacoes ja foi alcancado. MAX: 3");
+			}
+		}	
+		return retorno;
 	}
 
 	public ValorAvaliacao [] getAvaliacoes() {
-		return avaliacao;
+		return this.avaliacao;
+	}
+
+	public ValorAvaliacao getAvaliacaoPorMedida(String medida) {
+		// só preenchi assim pra não dar problema com a validação que você fez nas outras classes, mas antes tava "", 0.0f e 0.0f
+		MedidaAvaliacao medidaTemporaria = new MedidaAvaliacao("vazia", 1.0f, 1.0f);
+		ValorAvaliacao avaliacaoTemporaria = new ValorAvaliacao(medidaTemporaria);
+
+		for (int i = 0; i < this.avaliacao.length && this.avaliacao[i] != null; i++) {
+			if (this.avaliacao[i].getMedida().getNome().equals(medida)) {
+				this.avaliacao[i] = avaliacaoTemporaria;
+			}
+			else {
+				avaliacaoTemporaria = null;
+			}
+		}
+		return avaliacaoTemporaria;
 	}
 }

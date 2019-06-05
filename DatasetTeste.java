@@ -1,7 +1,7 @@
 public class DatasetTeste {
 	public static void main(String[] args) {
-		Dataset conjunto1 = new Dataset(10, 4, -2, "ABCDEFGHI JKLMNOPQ");
-		Dataset conjunto2 = new Dataset(923, -5654, 23, "ABACATEGUACAMOLE");
+		Dataset conjunto1 = new Dataset(10, 4, 2, "ABCDEFGHI JKLMNOPQ");
+		Dataset conjunto2 = new Dataset(923, 5654, 23, "ABACATEGUACAMOLE");
 
 		System.out.printf("Numero de exemplos: %d\n", conjunto1.getNumExemplos());
 		System.out.printf("Numero de atributos: %d\n", conjunto1.getNumAtributos());
