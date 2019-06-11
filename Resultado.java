@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class Resultado {
 	private Algoritmo algoritmo;
 	private Dataset dataset;
@@ -78,5 +80,22 @@ public class Resultado {
 			}
 		}
 		return avaliacaoTemporaria;
+	}
+
+	public boolean equals(Resultado resultado) {
+		System.out.println(Arrays.toString(getAlgoritmo().getParametros()));
+		System.out.println(Arrays.toString(resultado.getAlgoritmo().getParametros()));
+		if (getAlgoritmo().getNome().equals(resultado.getAlgoritmo().getNome()) 
+			&& Arrays.equals(getAlgoritmo().getParametros(), resultado.getAlgoritmo().getParametros())
+			&& getDataset().getNumExemplos() == resultado.getDataset().getNumExemplos()
+			&& getDataset().getNumAtributos() == resultado.getDataset().getNumAtributos()
+			&& getDataset().getNumClasses() == resultado.getDataset().getNumClasses()
+			&& getDataset().getNome().equals(resultado.getDataset().getNome())) {
+			return true;
+		}
+		else {
+			return false;
+		} 
+			
 	}
 }
