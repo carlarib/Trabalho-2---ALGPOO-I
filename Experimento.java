@@ -71,5 +71,24 @@ public class Experimento {
 		}	
 		return retorno;
 	}
+
+	public float [] getValoresResultado(String medida) {
+		float [] medidas = new float [10];
+		int posicao = 0;
+		boolean condicao = false;
+
+		for (int i = 0; i < this.resultado.length && this.resultado[i] != null; i++) {
+			System.out.println("resultados dif");
+			for (int j = 0; j < 3 && this.resultado[i].getAvaliacoes(j) != null; j++) {
+				System.out.println("num avaliacoes em cada result");
+				if (this.resultado[i].getAvaliacoes(j).getMedida().getNome().equals(medida)) {
+					medidas[posicao] = this.resultado[i].getAvaliacoes(j).getValor();
+					posicao++;
+					condicao = true;
+				}
+			}
+		}
+		return medidas;
+	}
 	
 }

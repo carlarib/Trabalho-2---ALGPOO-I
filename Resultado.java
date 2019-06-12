@@ -66,6 +66,10 @@ public class Resultado {
 		return this.avaliacao;
 	}
 
+	public ValorAvaliacao getAvaliacoes(int indice) {
+		return this.avaliacao[indice];
+	}
+
 	public ValorAvaliacao getAvaliacaoPorMedida(String medida) {
 		// só preenchi assim pra não dar problema com a validação que você fez nas outras classes, mas antes tava "", 0.0f e 0.0f
 		MedidaAvaliacao medidaTemporaria = new MedidaAvaliacao("vazia", 1.0f, 1.0f);
