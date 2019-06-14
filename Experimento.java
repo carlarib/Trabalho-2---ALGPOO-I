@@ -49,7 +49,7 @@ public class Experimento {
 
 	public void retornaObjeto() {
 		for (int i = 0; i < this.resultado.length && this.resultado[i] != null; i++) {
-			System.out.println("----- RESULTADO " + i + " -----");
+			System.out.println("----- RESULTADO " + (i+1) + " -----");
 			System.out.println("NOME DO ALGORITMO: " + this.resultado[i].getNomeDoAlgoritmo());
 			System.out.println("NOME DO DATASET: " + this.resultado[i].getNomeDoDataset());
 			System.out.println("PARAMETROS: " + Arrays.toString(this.resultado[i].getAlgoritmo().getParametros()));
@@ -255,6 +255,97 @@ public class Experimento {
 		}
 		if (encontrou) {
 			return this.resultado[posicao];
+		}
+		else {
+			return null;
+		}
+	}
+
+	public Resultado getPiorResultado(String medida) {
+		int posicao = 0;
+		boolean encontrou = false;
+		float piorResultado = Float.MAX_VALUE;
+
+		if (medida == null || medida == "") {
+			System.out.println("Parametro passado invalido");
+			System.exit(0);
+		} 
+		else {
+			for (int i = 0; i < this.resultado.length && this.resultado[i] != null; i++) {
+				for (int j = 0; j < 3 && this.resultado[i].getAvaliacoes(j) != null; j++) {
+					if (this.resultado[i].getAvaliacoes(j).getMedida().getNome().equals(medida)) {
+						if (this.resultado[i].getAvaliacoes(j).getValor() < piorResultado) {
+							piorResultado = this.resultado[i].getAvaliacoes(j).getValor();
+							posicao = i;
+							encontrou = true;
+						}
+					} 
+				}
+			}
+		}
+		if (encontrou) {
+			return this.resultado[posicao]; 
+		}
+		else {
+			return null;
+		}
+	}
+
+	public Resultado getPiorResultadoPorAlgoritmo(String algoritmo, String medida) {
+		int posicao = 0;
+		boolean encontrou = false;
+		float piorResultado = Float.MAX_VALUE;
+
+		if (algoritmo == null || medida == null || algoritmo == "" || medida == ""){
+			System.out.println("Parametro passado invalido");
+			System.exit(0);
+		}
+		else {
+			for (int i = 0; i < this.resultado.length && this.resultado[i] != null; i++) {
+				System.out.println("a");
+				for (int j = 0; j < 3 && this.resultado[i].getAvaliacoes(j) != null; j++) {
+					if (this.resultado[i].getAvaliacoes(j).getMedida().getNome().equals(medida) && this.resultado[i].getNomeDoAlgoritmo().equals(algoritmo)) {
+						if (this.resultado[i].getAvaliacoes(j).getValor() < piorResultado) {
+							piorResultado = this.resultado[i].getAvaliacoes(j).getValor();
+							posicao = i;
+							encontrou = true;
+						}
+					}
+				}
+			}
+		}
+		if (encontrou) {
+			return this.resultado[posicao]; 
+		}
+		else {
+			return null;
+		}
+	}
+
+	public Resultado getPiorResultadoPorDataset(String dataset, String medida) {
+		int posicao = 0;
+		boolean encontrou = false;
+		float piorResultado = Float.MAX_VALUE;
+
+		if (dataset == null || medida == null || dataset == "" || medida == "") {
+			System.out.println("Parametro passado invalido");
+			System.exit(0);
+		}
+		else {
+			for (int i = 0; i < this.resultado.length && this.resultado[i] != null; i++ ) { 
+				for (int j = 0; j < 3 && this.resultado[i].getAvaliacoes(j) != null; j++ ) {
+					if (this.resultado[i].getAvaliacoes(j).getMedida().getNome().equals(medida) && this.resultado[i].getNomeDoDataset().equals(dataset)) {
+						if (this.resultado[i].getAvaliacoes(j).getValor() < piorResultado) {
+							piorResultado = this.resultado[i].getAvaliacoes(j).getValor();
+							posicao = i;
+							encontrou = true;
+						}
+					}
+				}
+			}
+		}
+		if (encontrou) {
+			return this.resultado[posicao]; 
 		}
 		else {
 			return null;

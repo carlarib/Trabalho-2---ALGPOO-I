@@ -119,6 +119,17 @@ public class ExperimentoTeste {
 		System.out.println("---------- TESTANDO O METODO GETMELHORRESULTADOPORDATASET() ----------");
 		System.out.println(experimento.getMelhorResultadoPorDataset("CONJUNTO TESTE", "MED-REQ"));
 		
+		System.out.println("---------- TESTANDO O METODO GETPIORRESULTADO() ----------");
+		System.out.println(experimento.getPiorResultado("MED-REQ"));
+		System.out.println(experimento.getPiorResultado("medida"));
+		System.out.println(experimento.getPiorResultado("MED"));
+
+		System.out.println("---------- TESTANDO O METODO GETPIORRESULTADOPORALGORITMO() ----------");
+		System.out.println(experimento.getPiorResultadoPorAlgoritmo("ABC-ARG", "MED-REQ"));
+		
+		System.out.println("---------- TESTANDO O METODO GETPIORRESULTADOPORDATASET() ----------");
+		System.out.println(experimento.getPiorResultadoPorDataset("CONJUNTO TESTE", "MED-REQ"));
+		
 		System.out.println();
 		experimento.retornaObjeto();
 	}
